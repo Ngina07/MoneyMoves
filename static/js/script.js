@@ -24,3 +24,15 @@
   
   })()
   
+  function fetchCategoryArray(){
+    var categories = []
+  
+    document.querySelectorAll('.category').forEach(function(e){
+      name = e.querySelector('.name').innerHTML
+      if (name == '') return
+  
+      categories.push(name)
+    })
+  
+    return categories
+  }
