@@ -28,27 +28,30 @@
                 <i class="material-icons white-text left">add_circle</i>Add Expenses</button>
         </div>
         <ul class="z-depth-1">
+            {% for expense in expense_list }
             <li>
-                <div class="card-panel z-depth-0 expense">
-                    <div class="row">
-                        <div class="col 16">
-                            <span class="title">Page design</span>
+                    <div class="card-panel z-depth-0 expense">
+                        <div class="row">
+                            <div class="col 16">
+                                <span class="title">{{expense.title}}</span>
+                            </div>
+                            <div class="col 13">
+                                <span class="title">{{expense.amount}}</span>
+                            </div>
+                            <div class="col 6">
+                                <span class="title bold">{{expense.category.name}}</span>
+                            </div>
+                            <a href="">
+                                <i class="material-icons red-text right">close
+    
+                                </i> </a>
                         </div>
-                        <div class="col 13">
-                            <span class="title">230$</span>
-                        </div>
-                        <div class="col 6">
-                            <span class="title Bold">Developement</span>
-                        </div>
-                        <a href="">
-                            <i class="material-icons red-text right">close
-
-                            </i> </a>
                     </div>
-                </div>
+    
+    
+                </li>
+            {% endfor %}
 
-
-            </li>
 
         </ul>
     </section>
