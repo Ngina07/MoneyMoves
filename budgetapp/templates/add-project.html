@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <label for="categoryInput">Expense Categories(Hit enter after every category)</label>
+        <input type="text" name="categoryInput" id="categoryInput">
+        <input type="hidden" name="categoriesString">
+        <ul id="categoriesContainer">
+                    
+        </ul>
+        <button type="submit" class="btn">Start New Project</button>
+    </form>
+</div>
+<style>
+        form ul li.category{
+            display: inline-block;
+            background-color: white;
+            padding:5px 10px;
+            margin-right: 5px
+    
+        }
+</style>
+<script>
+        (function(){
+
+            document.querySelector('#categoryInput').addEventListener('keydown', function(e){
+              if (e.keyCode != 13){
+                return;
+              }
+          
+              e.preventDefault()
+          
+              var categoryName = this.value
+              this.value = ''
+              addNewCategory(categoryName)
+              updateCategoriesString()
+            })
+          
+            function addNewCategory(name){
+          
+              document.querySelector('#categoriesContainer').insertAdjacentHTML('beforeend',
+              `<li class="category">
+                <span class="name">${name}</span>
+                <span onclick="removeCategory(this)" class="btnRemove bold">X</span>
+              </li>`)
+            }
+          
+          })()
+          
+</script>
+
+{% endblock %}
