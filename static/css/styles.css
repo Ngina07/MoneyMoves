@@ -1,0 +1,16 @@
+html {
+    background-color: beige;
+}
+
+.noproject-wrapper {
+    margin-top: 250px;
+    padding: 80px 0px;
+    border: 6px solid #444444;
+    border-style: dashed;
+}
+
+.noproject-wrapper h3 {
+    padding-top: 10px;
+    margin-bottom: 50px
+
+}
