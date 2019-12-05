@@ -23,7 +23,7 @@
     }
   
   })()
-  
+
   function fetchCategoryArray(){
     var categories = []
   
@@ -35,4 +35,13 @@
     })
   
     return categories
+  }
+  function updateCategoriesString(){
+    categories = fetchCategoryArray()
+    document.querySelector('input[name="categoriesString"]').value = categories.join(',')
+  }
+  
+  function removeCategory(e){
+    e.parentElement.remove()
+    updateCategoriesString()
   }
