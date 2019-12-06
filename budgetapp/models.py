@@ -11,6 +11,12 @@ class Project(models.Model):
         self.slug = slugify(self.name)
         super(Project,self).save(*args, **kwargs)
 
+    def budget_left(self):
+        pass
+    def total_transactions(self):
+        expense_list = Expense.objects.filter(project=self)
+        return len(expense_list)
+
     def __str__(self):
         return self.name
 
