@@ -12,7 +12,14 @@ class Project(models.Model):
         super(Project,self).save(*args, **kwargs)
 
     def budget_left(self):
-        pass
+        expense_list = Expense.objects.filter(project=self)
+        total_expense_amount = 0
+        for expense in expense_list:
+            total_expense_amount += expense.amount
+
+        return self.budget - total_expense_amount
+
+
     def total_transactions(self):
         expense_list = Expense.objects.filter(project=self)
         return len(expense_list)
