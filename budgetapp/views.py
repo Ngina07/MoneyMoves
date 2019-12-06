@@ -13,7 +13,7 @@ def project_detail(request,project_slug):
     project = get_object_or_404(Project, slug=project_slug)
     category_list = Category.objects.filter(project=project)
 
-    return render(request,'project-detail.html',{'project': project, 'expense_list':project.expenses.all()})
+    return render(request,'project-detail.html',{'project': project, 'expense_list':project.expenses.all(), 'category_list':category_list})
 
 
 class ProjectCreateView(CreateView):
