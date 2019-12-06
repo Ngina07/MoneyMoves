@@ -55,6 +55,26 @@
     </section>
 
 </div>
+<div id="expenseModal" class="modal">
+    <div class="modal-content">
+        <h4>Add Expense</h4>
+        <form method="POST" >
+            {% csrf_token %}
+            <label for="title">Title</label>
+            <input name="title" id="title">
+
+            <label for="amount">Amount</label>
+            <input name="amount" id="amount">
+            
+            <select name="category">
+                {% for category in category_list %}
+                <option>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn">Add</button>
+        </form>
+    </div>
+</div>
 <style>
     html {
         background-color: beige;
@@ -118,4 +138,12 @@
     }
  
 </style>
+
+<script>
+    var elem = document.querySelector('.modal')
+    var instance = M.Modal.init(elem)
+
+    var elem = document.querySelector('.select')
+    var instance = M.FormSelect.init(elem)
+</script>
 {% endblock %}
