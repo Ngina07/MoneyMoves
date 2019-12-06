@@ -13,12 +13,12 @@
             <div class="col s12 m6 14"></div>
             <div class="card-panel">
                 <h6 class="bold">Budget left</h6>
-                <h1 class="bold">$....</h1>
+                <h1 class="bold">${{project.budget_left}}</h1>
             </div>
             <div class="col s12 m6 14"></div>
             <div class="card-panel">
                 <h6 class="bold">Total Transactions</h6>
-                <h1 class="bold">$......</h1>
+                <h1 class="bold">${{ project.total_transactions }}</h1>
             </div>
         </div>
     </section>
@@ -41,7 +41,7 @@
                         <div class="col 6">
                             <span class="title bold">{{expense.category.name}}</span>
                         </div>
-                        <a href="">
+                        <a onclick="deleteExpense(this)" data-id="{{ expense.id }}">
                             <i class="material-icons red-text right">close
 
                             </i> </a>
@@ -147,5 +147,21 @@
 
     var elem = document.querySelector('select')
     var instance = M.FormSelect.init(elem)
+
+    function deleteExpense(e){
+        let id = e.dataset.id
+
+        e.closest('li').remove()
+        fetch('', {
+          method: 'DELETE',
+          headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+          },
+          body: JSON.stringify({
+            'id': id
+          }),
+          credentials: 'same-origin',
+        })
+      }
 </script>
 {% endblock %}
