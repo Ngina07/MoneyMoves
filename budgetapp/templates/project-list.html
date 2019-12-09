@@ -3,33 +3,44 @@
 
 
 <div class="container">
-    <div class="noproject-wrapper center">
-        <h3 class="grey-text">Sorry, you do not have any projects</h3>
-        <a href="" class="btn-large grey">
-            <i class="material-icons white-text left">add_circle</i>
-            <span class="bold">Add Projects</span>
-        </a>
+<h1>My Projects</h1>
+<hr>
 
+    <div class="row">
+        {% for project in project_list %}
+        <div class="col s12 l3">
+            <div class="card-panel">
+                <h4>{{ project.name }}</h4>
+                <a href="{% url 'detail' project.slug %}" class="btn">View Project</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="noproject-wrapper center">
+            <h3 class="grey-text">Sorry, you do not have any projects</h3>
+            <a href="" class="btn-large grey">
+                <i class="material-icons white-text left">add_circle</i>
+                <span class="bold">Add Projects</span>
+            </a>
+
+        </div>
+        {% endfor %}
     </div>
-
 </div>
 <style>
     html {
         background-color: beige;
     }
-    
+
     .noproject-wrapper {
         margin-top: 250px;
         padding: 80px 0px;
         border: 6px solid #444444;
         border-style: dashed;
     }
-    
+
     .noproject-wrapper h3 {
         padding-top: 10px;
         margin-bottom: 50px
-    
     }
-    
 </style>
 {% endblock %}
