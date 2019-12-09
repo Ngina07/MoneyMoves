@@ -5,6 +5,8 @@ from .forms import ExpenseForm
 from django.views.generic import CreateView
 from django.utils.text import slugify
 import json
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def project_list(request):
