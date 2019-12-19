@@ -19,8 +19,8 @@ from django_registration.backends.one_step.views import RegistrationView
 from django.contrib.auth import views
 
 urlpatterns = [
-    path('',include('budgetapp.urls')),
     path('admin/', admin.site.urls),
+    path('',include('budgetapp.urls')),
     path('accounts/register/',RegistrationView.as_view(success_url='/accounts/login/')), #Can go next
     path('accounts/',include('django_registration.backends.one_step.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
