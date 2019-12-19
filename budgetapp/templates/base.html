@@ -9,7 +9,7 @@
     {% if title %}
     <title>{{title}}</title>
     {% else %}
-    <title>Budgettttt</title>
+    <title>Money-moves</title>
     {% endif %}
 
     {% block styles %}
@@ -25,7 +25,7 @@
   </head>
 
   <body>
-    
+    {% include 'navbar.html' %}
     {% block content %}
 
     {% endblock %}

@@ -1,0 +1,58 @@
+{% extends "django_registration/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<body style="background-color: rgb(90, 54, 124); padding-top:150px;">
+  
+
+<div class="container">
+  <div class="row topBuffer">
+    <!-- Empty div -->
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center">
+      {% if form.errors %}
+        <p> Password or Username is incorrect...try again </p>
+      {% endif %}
+
+
+       {% if 'login_required' %}
+            <p class="alert alert-info" role="alert"> Please sign in to access this page.</p>
+      {% endif %}
+
+
+
+
+      <div class="card card-default">
+
+        <h3 class="text-center"> <a href="/"> MONEY-MOVES</a>  </h3>
+            <hr>
+        <div class="card-body login">
+
+          <form  action="/accounts/login/" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+            </div>
+
+            <hr>
+
+            <p class='text-center'> New member? <a href='/accounts/register'> Sign-up here... </a></p>
+
+
+            <input type="hidden" name="next" value="{{next}}">
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- empty div -->
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+{% endblock %}
+</body>

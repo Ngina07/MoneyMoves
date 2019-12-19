@@ -13,7 +13,14 @@
             <div class="col s12 m6 14"></div>
             <div class="card-panel">
                 <h6 class="bold">Budget left</h6>
+                {% if project.budget_left > 0 %}
+                <h1 class="bold green-text">${{project.budget_left}}</h1>
+                {% elif project.budget_left == 0 %}
                 <h1 class="bold">${{project.budget_left}}</h1>
+
+                {% else %}
+                <h1 class="bold red-text">${{project.budget_left}}</h1>
+                {% endif %}
             </div>
             <div class="col s12 m6 14"></div>
             <div class="card-panel">
@@ -80,7 +87,7 @@
 </div>
 <style>
     html {
-        background-color: beige;
+        background-color: rgb(195, 185, 221);
     }
 
     .noproject-wrapper {

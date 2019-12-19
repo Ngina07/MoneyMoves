@@ -1,0 +1,49 @@
+{% extends 'django_registration/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<body style="background-color: rgb(90, 54, 124)">
+
+
+  <div class="container topBuffer" style="padding-top: 40px">
+    <div class="row">
+      <!-- Empty div -->
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        {% if form.errors %}
+        {{ form.errors }}
+        {% endif %}
+        <div class="card card-default">
+
+          <div class="card-heading">
+            <h3 class="text-center"> <a href="/"> MONEY-MOVES </a> </h3>
+            <hr>
+
+            <h5 class="text-center signUp">Sign Up</h5>
+          </div>
+          <div class="card-body regForm">
+
+            <form action="/accounts/register/" method="post">
+              {% csrf_token %}
+              {% bootstrap_form form %}
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+              </div>
+
+              <input type="hidden" name="next" value="{{next}}">
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- empty div -->
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  {% endblock %}
+</body>

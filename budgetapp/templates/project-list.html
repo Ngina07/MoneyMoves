@@ -3,7 +3,12 @@
 
 
 <div class="container">
-<h1>My Projects</h1>
+<h1>My Projects</h1> 
+<a href="/add" class="btn-large">
+    <i class="material-icons white-text left">add_circle</i>
+    <span class="bold">Add Project</span>
+</a>
+
 <hr>
 
     <div class="row">
@@ -17,7 +22,7 @@
         {% empty %}
         <div class="noproject-wrapper center">
             <h3 class="grey-text">Sorry, you do not have any projects</h3>
-            <a href="" class="btn-large grey">
+            <a href="/add" class="btn-large grey">
                 <i class="material-icons white-text left">add_circle</i>
                 <span class="bold">Add Projects</span>
             </a>
@@ -28,7 +33,7 @@
 </div>
 <style>
     html {
-        background-color: beige;
+        background-color: rgb(195, 185, 221);
     }
 
     .noproject-wrapper {
