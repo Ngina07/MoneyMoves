@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
+from django.contrib.auth.models import User
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True, blank=True)
     budget = models.IntegerField()
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 # Auto generates slug
     def save(self, *args, **kwargs):
@@ -45,3 +47,4 @@ class Expense(models.Model):
 
     class Meta:
         ordering = ('-amount',)
+
