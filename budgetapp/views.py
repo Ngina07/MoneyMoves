@@ -6,15 +6,25 @@ from django.views.generic import CreateView
 from django.utils.text import slugify
 import json
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_protect
 
 
 # Create your views here.
-def project_list(request):
+
+
+def index(request):
     
-    project_list = Project.objects.all()
+    return render(request, 'index.html', locals())
+    
+@login_required
+def project_list(request):
+     
+    
+    project_list = Project.objects.filter(owner=request.user)
 
     return render(request,'project-list.html', {'project_list':project_list})
-
+@login_required
 def project_detail(request,project_slug):
     # Fetch one budget
     project = get_object_or_404(Project, slug=project_slug)
@@ -53,8 +63,10 @@ class ProjectCreateView(CreateView):
     model = Project
     template_name = 'add-project.html'
     fields = ('name', 'budget')
-
+    
+    
     def form_valid(self, form):
+        form.instance.owner = self.request.user
         self.object = form.save(commit=False)
         self.object.save()
 
